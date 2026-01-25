@@ -239,6 +239,12 @@ end
 -- Keymaps 
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { noremap = true, silent = true, desc = "Toggle Explorer" })
 
+-- Pane navigation (LazyVim-style)
+vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true, desc = 'Move to left pane' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true, desc = 'Move to below pane' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true, desc = 'Move to above pane' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true, desc = 'Move to right pane' })
+
 -- Bufferline / buffer navigation (LazyVim-style)
 vim.keymap.set('n', '<S-h>', function()
   if vim.fn.exists(':BufferLineCyclePrev') == 2 then
