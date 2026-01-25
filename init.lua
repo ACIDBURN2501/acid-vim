@@ -29,6 +29,7 @@ vim.cmd([[call plug#begin()]])
 vim.cmd([[Plug 'folke/tokyonight.nvim']])
 vim.cmd([[Plug 'vim-airline/vim-airline']])
 vim.cmd([[Plug 'vim-airline/vim-airline-themes']])
+vim.cmd([[Plug 'akinsho/bufferline.nvim', { 'tag': '*' }]])
 
 -- Neo-tree and dependencies
 vim.cmd([[Plug 'nvim-lua/plenary.nvim']])
@@ -83,6 +84,14 @@ safe_setup("mason")
 safe_setup("telescope")
 safe_setup("neo-tree")
 safe_setup("smear_cursor")
+safe_setup("bufferline", {
+  options = {
+    diagnostics = "nvim_lsp",
+    separator_style = "slant",
+    show_close_icon = false,
+    show_buffer_close_icons = false,
+  },
+})
 
 -- LSP (minimal; install servers via :Mason)
 do
@@ -229,3 +238,20 @@ end
 
 -- Keymaps 
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { noremap = true, silent = true, desc = "Toggle Explorer" })
+
+-- Bufferline / buffer navigation (LazyVim-style)
+vim.keymap.set('n', '<S-h>', function()
+  if vim.fn.exists(':BufferLineCyclePrev') == 2 then
+    vim.cmd('BufferLineCyclePrev')
+  else
+    vim.cmd('bprevious')
+  end
+end, { noremap = true, silent = true, desc = 'Prev buffer' })
+
+vim.keymap.set('n', '<S-l>', function()
+  if vim.fn.exists(':BufferLineCycleNext') == 2 then
+    vim.cmd('BufferLineCycleNext')
+  else
+    vim.cmd('bnext')
+  end
+end, { noremap = true, silent = true, desc = 'Next buffer' })
