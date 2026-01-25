@@ -1,0 +1,2 @@
+# acid-vim
+Neovim configuration.
