@@ -1,0 +1,9 @@
+*~
+*.swp
+*.swo
+*.tmp
+.netrwhist
+.DS_Store
+
+# local backups
+old_config/
