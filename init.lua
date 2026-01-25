@@ -3,16 +3,22 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- llama.vim reads this at plugin load time (so it must be set before plug#end())
-vim.g.llama_config = {
-  endpoint_fim = "http://starlight.tail1750c9.ts.net:8081/infill",
-  endpoint_inst = "http://starlight.tail1750c9.ts.net:8081/v1/chat/completions",
-  model_inst = "Devstral-Small-2-24B:Q4_K_M",
-  model_fim = "Devstral-Small-2-24B:Q4_K_M",
-  api_key = "sk-local",
+-- Load configuration from environment variables
+local llama_config = {
+  endpoint_fim = os.getenv("LLM_ENDPOINT_FIM") or "http://localhost:8081/infill",
+  endpoint_inst = os.getenv("LLM_ENDPOINT_INST") or "http://localhost:8081/v1/chat/completions",
+  model_inst = os.getenv("LLM_MODEL_INST") or "Devstral-Small-2-24B:Q4_K_M",
+  model_fim = os.getenv("LLM_MODEL_FIM") or "Devstral-Small-2-24B:Q4_K_M",
+  api_key = os.getenv("LLM_LOCAL_API_KEY") or "sk-local",
   show_info = 1,
   ring_n_chunks = 32,
   auto_fim = false,
 }
+
+-- Only set llama_config if environment variables are present
+if os.getenv("LLAMA_ENDPOINT_FIM") then
+  vim.g.llama_config = llama_config
+end
 
 -- Bootstrap vim-plug
 local plug_path = vim.fn.stdpath('data') .. '/site/autoload/plug.vim'

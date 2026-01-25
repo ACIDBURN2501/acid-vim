@@ -36,6 +36,64 @@ This repo is intentionally small: a single `init.lua` using `vim-plug`.
 - `rg` (ripgrep) for Telescope `live_grep`
 - A Nerd Font (recommended) for file icons
 
+## Configuration
+
+This config uses environment variables for the `llama.vim` plugin to keep sensitive information out of version control. You need to set these variables:
+
+### Required Environment Variables
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `LLAMA_ENDPOINT_FIM` | URL for fill-in-middle API | `http://localhost:8081/infill` |
+| `LLAMA_ENDPOINT_INST` | URL for instruct API | `http://localhost:8081/v1/chat/completions` |
+| `LLAMA_MODEL_INST` | Model name for instruct mode | `Devstral-Small-2-24B:Q4_K_M` |
+| `LLAMA_MODEL_FIM` | Model name for fill-in-middle mode | `Devstral-Small-2-24B:Q4_K_M` |
+| `LLAMA_API_KEY` | API key for authentication | `sk-local` |
+
+### Setup Options
+
+**Option 1: Source .env file (recommended)**
+
+1. Copy the `.env.example` file to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit `.env` with your configuration
+
+3. Source it before starting Neovim:
+   ```bash
+   # In your shell startup file (~/.bashrc, ~/.zshrc, etc.)
+   if [ -f "$XDG_CONFIG_HOME/nvim/.env" ]; then
+       set -a
+       source "$XDG_CONFIG_HOME/nvim/.env"
+       set +a
+   fi
+   ```
+
+**Option 2: Set in shell configuration**
+
+Add these lines to your `~/.bashrc`, `~/.zshrc`, or `~/.profile`:
+
+```bash
+export LLAMA_ENDPOINT_FIM="http://your-server:8081/infill"
+export LLAMA_ENDPOINT_INST="http://your-server:8081/v1/chat/completions"
+export LLAMA_MODEL_INST="YourModelName"
+export LLAMA_MODEL_FIM="YourModelName"
+export LLAMA_API_KEY="your-api-key"
+```
+
+**Option 3: Set temporarily**
+
+```bash
+export LLAMA_ENDPOINT_FIM="http://your-server:8081/infill"
+export LLAMA_ENDPOINT_INST="http://your-server:8081/v1/chat/completions"
+export LLAMA_MODEL_INST="YourModelName"
+export LLAMA_MODEL_FIM="YourModelName"
+export LLAMA_API_KEY="your-api-key"
+nvim
+```
+
 ## Install
 
 1. Clone into `~/.config/nvim`
