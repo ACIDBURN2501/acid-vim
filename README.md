@@ -1,6 +1,6 @@
 # acid-vim
 
-My personal Neovim configuration.
+My personal ultralight Neovim configuration.
 
 This repo is intentionally small: a single `init.lua` using `vim-plug`.
 
@@ -75,6 +75,18 @@ These are buffer-local and only active once an LSP attaches.
 
 - `]w` / `[w`: next/prev warning
 - `]e` / `[e`: next/prev error
+
+### Pane Navigation
+
+- `<C-h>`: move to left pane
+- `<C-j>`: move to below pane
+- `<C-k>`: move to above pane
+- `<C-l>`: move to right pane
+
+### Buffer Navigation
+
+- `<S-h>`: previous buffer
+- `<S-l>`: next buffer
 
 ### Llama
 
