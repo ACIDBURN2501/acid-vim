@@ -215,9 +215,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if ok then
       nmap('gr', builtin.lsp_references, 'References')
       nmap('gi', builtin.lsp_implementations, 'Implementations')
+      nmap('gd', builtin.lsp_definitions, 'Definitions')
     else
       nmap('gr', vim.lsp.buf.references, 'References')
       nmap('gi', vim.lsp.buf.implementation, 'Implementation')
+      nmap('gd', vim.lsp_definitions, 'Definitions')
     end
   end,
 })
