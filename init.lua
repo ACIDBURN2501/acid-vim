@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Set the clipboard provider
+vim.g.clipboard = "wl-copy"
+
 -- llama.vim reads this at plugin load time (so it must be set before plug#end())
 -- Load configuration from environment variables
 local llama_config = {
