@@ -51,6 +51,9 @@ vim.cmd([[Plug 'nvim-telescope/telescope.nvim']])
 vim.cmd([[Plug 'sphamba/smear-cursor.nvim']])
 vim.cmd([[Plug 'ggml-org/llama.vim']])
 
+-- Misc
+vim.cmd([[Plug 'MeanderingProgrammer/render-markdown.nvim']])
+
 vim.cmd([[call plug#end()]])
 
 -- General Options
