@@ -16,10 +16,37 @@ local llama_config = {
 	show_info = 2,
 	ring_n_chunks = 32,
 	auto_fim = false,
+	stop_strings = {
+		"\n\n",
+		"\n/*",
+		"\n/**",
+		"\n}",
+		"\n#",
+		"\ndef",
+		"\n//",
+		"\nclass",
+		"\nif",
+		"\nfor",
+		"\nwhile",
+		"\nreturn",
+		"\nint",
+		"\nvoid",
+		"\nconst",
+		"\nstatic",
+		".\n",
+		"?\n",
+		"!\n",
+		"。",
+	},
+	keymap_fim_trigger = "<C-F>",
+	keymap_fim_accept_full = "<Tab>",
+	keymap_fim_accept_line = "<S-Tab>",
+	keymap_fim_accept_word = "<C-B>",
 }
+vim.keymap.set("n", "<leader>llt", ":LlamaToggleAutoFim<CR>", { desc = "Toggle auto-FIM" })
 
 -- Only set llama_config if environment variables are present
-if os.getenv("LLAMA_ENDPOINT_FIM") then
+if os.getenv("LLM_ENDPOINT_FIM") then
 	vim.g.llama_config = llama_config
 end
 
